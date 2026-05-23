@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 680" role="img" aria-label="六个候选基因在基因本体背景分布中的位置">
+
+  <style>
+    .title { font: 800 30px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #172321; }
+    .subtitle { font: 500 17px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #5e6b67; }
+    .label { font: 650 15px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #35413e; }
+    .small { font: 500 13px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #66736f; }
+    .value { font: 800 14px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #263130; }
+    .axis { font: 500 12px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #6b7773; }
+    .note { font: 500 14px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #5e6b67; }
+  </style>
+
+<rect width="1120" height="680" rx="18" fill="#fbfaf7" />
+<text x="54.0" y="56.0" text-anchor="start" class="title">候选基因在基因本体背景中的位置</text>
+<text x="54.0" y="88.0" text-anchor="start" class="subtitle">数值为蛋白表征层的翼手目距离背景分位数；越靠右代表翼手目相对其他哺乳动物目的分离越强。</text>
+<line x1="170.0" y1="128" x2="170.0" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="170.0" y="514.0" text-anchor="middle" class="axis">60</text>
+<line x1="375.0" y1="128" x2="375.0" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="375.0" y="514.0" text-anchor="middle" class="axis">70</text>
+<line x1="580.0" y1="128" x2="580.0" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="580.0" y="514.0" text-anchor="middle" class="axis">80</text>
+<line x1="785.0" y1="128" x2="785.0" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="785.0" y="514.0" text-anchor="middle" class="axis">90</text>
+<line x1="990.0" y1="128" x2="990.0" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="990.0" y="514.0" text-anchor="middle" class="axis">100</text>
+<rect x="785.0" y="128.0" width="205.0" height="352.0" rx="0" fill="#dfeadf" />
+<text x="887.5" y="114.0" text-anchor="middle" class="small">高分区间</text>
+<text x="146.0" y="173.0" text-anchor="end" class="label">CTSB</text>
+<rect x="170.0" y="148.0" width="759.9" height="30.0" rx="5" fill="#b84f3a" />
+<text x="941.9" y="169.0" text-anchor="start" class="value">97.1</text>
+<text x="146.0" y="227.0" text-anchor="end" class="label">MAVS</text>
+<rect x="170.0" y="202.0" width="699.9" height="30.0" rx="5" fill="#216869" />
+<text x="881.9" y="223.0" text-anchor="start" class="value">94.1</text>
+<text x="146.0" y="281.0" text-anchor="end" class="label">STAT2</text>
+<rect x="170.0" y="256.0" width="602.2" height="30.0" rx="5" fill="#6c5b9c" />
+<text x="784.2" y="277.0" text-anchor="start" class="value">89.4</text>
+<text x="146.0" y="335.0" text-anchor="end" class="label">TNF</text>
+<rect x="170.0" y="310.0" width="459.6" height="30.0" rx="5" fill="#c28b2c" />
+<text x="641.6" y="331.0" text-anchor="start" class="value">82.4</text>
+<text x="146.0" y="389.0" text-anchor="end" class="label">MX1</text>
+<rect x="170.0" y="364.0" width="444.5" height="30.0" rx="5" fill="#335c81" />
+<text x="626.5" y="385.0" text-anchor="start" class="value">81.7</text>
+<text x="146.0" y="443.0" text-anchor="end" class="label">IFNAR2</text>
+<rect x="170.0" y="418.0" width="602.2" height="30.0" rx="5" fill="#627264" />
+<text x="784.2" y="439.0" text-anchor="start" class="value">89.4</text>
+<text x="580.0" y="626.0" text-anchor="middle" class="axis">基因本体背景分位数</text>
+<text x="54.0" y="656.0" text-anchor="start" class="note">CTSB 和 MAVS 位于背景分布右端，是后续深入分析的最高优先级候选。</text>
+</svg>

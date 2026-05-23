@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 680" role="img" aria-label="蛋白表征和编码序列表征对候选基因的支持">
+
+  <style>
+    .title { font: 800 30px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #172321; }
+    .subtitle { font: 500 17px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #5e6b67; }
+    .label { font: 650 15px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #35413e; }
+    .small { font: 500 13px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #66736f; }
+    .value { font: 800 14px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #263130; }
+    .axis { font: 500 12px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #6b7773; }
+    .note { font: 500 14px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #5e6b67; }
+  </style>
+
+<rect width="1120" height="680" rx="18" fill="#fbfaf7" />
+<text x="54.0" y="56.0" text-anchor="start" class="title">蛋白表征与编码序列表征的同向支持</text>
+<text x="54.0" y="88.0" text-anchor="start" class="subtitle">比较蛋白模型、编码序列分隔符池化和编码序列平均池化的翼手目背景分位数。</text>
+<line x1="104" y1="532.0" x2="1034" y2="532.0" stroke="#dbe4e0" stroke-width="1" />
+<text x="90.0" y="536.0" text-anchor="end" class="axis">60</text>
+<line x1="104" y1="434.5" x2="1034" y2="434.5" stroke="#dbe4e0" stroke-width="1" />
+<text x="90.0" y="438.5" text-anchor="end" class="axis">70</text>
+<line x1="104" y1="337.0" x2="1034" y2="337.0" stroke="#dbe4e0" stroke-width="1" />
+<text x="90.0" y="341.0" text-anchor="end" class="axis">80</text>
+<line x1="104" y1="239.5" x2="1034" y2="239.5" stroke="#dbe4e0" stroke-width="1" />
+<text x="90.0" y="243.5" text-anchor="end" class="axis">90</text>
+<line x1="104" y1="142.0" x2="1034" y2="142.0" stroke="#dbe4e0" stroke-width="1" />
+<text x="90.0" y="146.0" text-anchor="end" class="axis">100</text>
+<rect x="104.0" y="142.0" width="930.0" height="97.5" rx="0" fill="#dfeadf" />
+<text x="181.5" y="566.0" text-anchor="middle" class="label">CTSB</text>
+<rect x="138.5" y="170.6" width="26.0" height="361.4" rx="3" fill="#b84f3a" />
+<rect x="168.5" y="181.3" width="26.0" height="350.7" rx="3" fill="#216869" />
+<rect x="198.5" y="184.9" width="26.0" height="347.1" rx="3" fill="#335c81" />
+<text x="336.5" y="566.0" text-anchor="middle" class="label">MAVS</text>
+<rect x="293.5" y="199.1" width="26.0" height="332.9" rx="3" fill="#b84f3a" />
+<rect x="323.5" y="259.9" width="26.0" height="272.1" rx="3" fill="#216869" />
+<rect x="353.5" y="231.3" width="26.0" height="300.7" rx="3" fill="#335c81" />
+<text x="491.5" y="566.0" text-anchor="middle" class="label">STAT2</text>
+<rect x="448.5" y="245.6" width="26.0" height="286.4" rx="3" fill="#b84f3a" />
+<rect x="478.5" y="388.4" width="26.0" height="143.6" rx="3" fill="#216869" />
+<rect x="508.5" y="270.6" width="26.0" height="261.4" rx="3" fill="#335c81" />
+<text x="646.5" y="566.0" text-anchor="middle" class="label">TNF</text>
+<rect x="603.5" y="313.4" width="26.0" height="218.6" rx="3" fill="#b84f3a" />
+<rect x="633.5" y="481.3" width="26.0" height="50.7" rx="3" fill="#216869" />
+<rect x="663.5" y="327.7" width="26.0" height="204.3" rx="3" fill="#335c81" />
+<text x="801.5" y="566.0" text-anchor="middle" class="label">MX1</text>
+<rect x="758.5" y="320.6" width="26.0" height="211.4" rx="3" fill="#b84f3a" />
+<rect x="788.5" y="370.6" width="26.0" height="161.4" rx="3" fill="#216869" />
+<rect x="818.5" y="331.3" width="26.0" height="200.7" rx="3" fill="#335c81" />
+<text x="956.5" y="566.0" text-anchor="middle" class="label">IFNAR2</text>
+<rect x="913.5" y="245.6" width="26.0" height="286.4" rx="3" fill="#b84f3a" />
+<rect x="943.5" y="370.6" width="26.0" height="161.4" rx="3" fill="#216869" />
+<rect x="973.5" y="395.6" width="26.0" height="136.4" rx="3" fill="#335c81" />
+<rect x="260.0" y="610.0" width="18.0" height="18.0" rx="3" fill="#b84f3a" />
+<text x="288.0" y="624.0" text-anchor="start" class="small">蛋白表征</text>
+<rect x="490.0" y="610.0" width="18.0" height="18.0" rx="3" fill="#216869" />
+<text x="518.0" y="624.0" text-anchor="start" class="small">编码序列分隔符池化</text>
+<rect x="720.0" y="610.0" width="18.0" height="18.0" rx="3" fill="#335c81" />
+<text x="748.0" y="624.0" text-anchor="start" class="small">编码序列平均池化</text>
+<text x="54.0" y="656.0" text-anchor="start" class="note">CTSB 与 MAVS 在蛋白和编码序列两层都保持高位；STAT2 与 TNF 的平均池化支持更清晰。</text>
+</svg>

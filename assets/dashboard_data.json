@@ -1,0 +1,119 @@
+{
+  "speciesCounts": {
+    "Chiroptera": 23,
+    "Cetartiodactyla": 13,
+    "Primates": 12,
+    "Rodentia": 12,
+    "Carnivora": 11,
+    "Afrotheria": 7,
+    "Perissodactyla": 6,
+    "Lagomorpha": 4,
+    "Eulipotyphla": 3,
+    "Pholidota": 2
+  },
+  "nature115ReadyCounts": {
+    "Carnivora": 16,
+    "Primates": 14,
+    "Chiroptera": 14,
+    "Rodentia": 12,
+    "Artiodactyla": 10,
+    "Perissodactyla": 4,
+    "Afrotheria": 2,
+    "Lagomorpha": 2,
+    "Pholidota": 2
+  },
+  "candidateMatrix": [
+    {
+      "gene": "CTSB",
+      "Protein GO Chi": 84.55882352941177,
+      "Carbon sep GO Chi": 97.79411764705884,
+      "Carbon mean GO Chi": 97.05882352941175,
+      "Protein-Carbon": 0.5833333333333334,
+      "Strict QC pass %": 100.0
+    },
+    {
+      "gene": "MX1",
+      "Protein GO Chi": 92.64705882352942,
+      "Carbon sep GO Chi": 94.8529411764706,
+      "Carbon mean GO Chi": 90.80882352941175,
+      "Protein-Carbon": 0.8333333333333333,
+      "Strict QC pass %": 100.0
+    },
+    {
+      "gene": "MAVS",
+      "Protein GO Chi": 90.07352941176472,
+      "Carbon sep GO Chi": 79.77941176470588,
+      "Carbon mean GO Chi": 81.25,
+      "Protein-Carbon": 0.65,
+      "Strict QC pass %": 100.0
+    },
+    {
+      "gene": "STAT2",
+      "Protein GO Chi": 66.54411764705883,
+      "Carbon sep GO Chi": 55.51470588235294,
+      "Carbon mean GO Chi": 57.72058823529412,
+      "Protein-Carbon": 0.7833333333333333,
+      "Strict QC pass %": 100.0
+    },
+    {
+      "gene": "TNF",
+      "Protein GO Chi": 53.30882352941177,
+      "Carbon sep GO Chi": 33.45588235294118,
+      "Carbon mean GO Chi": 33.45588235294118,
+      "Protein-Carbon": 0.0166666666666666,
+      "Strict QC pass %": 100.0
+    },
+    {
+      "gene": "IFNAR2",
+      "Protein GO Chi": 38.602941176470594,
+      "Carbon sep GO Chi": 44.485294117647065,
+      "Carbon mean GO Chi": 30.88235294117647,
+      "Protein-Carbon": 0.15,
+      "Strict QC pass %": 95.23809523809523
+    }
+  ],
+  "strictQc": [
+    {
+      "consensus_gene_symbol": "CTSB",
+      "n_species": 56,
+      "member_qc_pass": 56,
+      "member_qc_total": 56,
+      "mini_full_coverage": true
+    },
+    {
+      "consensus_gene_symbol": "MAVS",
+      "n_species": 56,
+      "member_qc_pass": 56,
+      "member_qc_total": 56,
+      "mini_full_coverage": true
+    },
+    {
+      "consensus_gene_symbol": "IFNAR2",
+      "n_species": 42,
+      "member_qc_pass": 40,
+      "member_qc_total": 42,
+      "mini_full_coverage": false
+    },
+    {
+      "consensus_gene_symbol": "STAT2",
+      "n_species": 56,
+      "member_qc_pass": 56,
+      "member_qc_total": 56,
+      "mini_full_coverage": true
+    },
+    {
+      "consensus_gene_symbol": "TNF",
+      "n_species": 55,
+      "member_qc_pass": 55,
+      "member_qc_total": 55,
+      "mini_full_coverage": true
+    },
+    {
+      "consensus_gene_symbol": "MX1",
+      "n_species": 46,
+      "member_qc_pass": 46,
+      "member_qc_total": 46,
+      "mini_full_coverage": false
+    }
+  ]
+}

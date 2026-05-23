@@ -1,0 +1,1153 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>蝙蝠免疫基因图谱 | 深度学习表征</title>
+  <style>
+:root {
+  --ink: #16211f;
+  --muted: #5e6b67;
+  --paper: #f6f8f7;
+  --panel: #ffffff;
+  --wash: #edf4f1;
+  --line: #d9e1dc;
+  --teal: #216869;
+  --deep: #123d4a;
+  --rust: #b84f3a;
+  --blue: #335c81;
+  --shadow: 0 14px 34px rgba(18, 61, 74, 0.10);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Inter, "Noto Sans SC", "Microsoft YaHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.68;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 13px clamp(20px, 5vw, 72px);
+  background: rgba(246, 248, 247, 0.94);
+  border-bottom: 1px solid rgba(217, 225, 220, 0.95);
+  backdrop-filter: blur(14px);
+}
+
+.brand {
+  color: var(--deep);
+  font-weight: 800;
+}
+
+nav {
+  display: flex;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+nav a {
+  border-radius: 6px;
+  padding: 5px 7px;
+}
+
+nav a:hover {
+  color: var(--rust);
+}
+
+.hero {
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 90px clamp(22px, 7vw, 96px) 76px;
+  text-align: center;
+  background: #eef4f1;
+}
+
+.hero-inner {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--rust);
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 840px;
+  margin: 0 auto 20px;
+  font-size: clamp(44px, 5.6vw, 68px);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.lead {
+  max-width: 790px;
+  margin: 0 auto 34px;
+  color: var(--muted);
+  font-size: clamp(17px, 1.55vw, 20px);
+  line-height: 1.65;
+}
+
+.hero-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 1px;
+  width: min(760px, 100%);
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--line);
+}
+
+.hero-summary article {
+  display: grid;
+  place-items: center;
+  min-height: 92px;
+  padding: 18px 14px;
+  background: rgba(255, 255, 255, 0.72);
+  text-align: center;
+}
+
+.hero-summary strong {
+  display: block;
+  color: var(--deep);
+  font-size: 34px;
+  line-height: 1;
+}
+
+.hero-summary span {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.section {
+  padding: 76px clamp(22px, 6vw, 86px);
+}
+
+.section-head {
+  max-width: 780px;
+  margin-bottom: 34px;
+}
+
+.section-head h2 {
+  margin-bottom: 0;
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.16;
+  letter-spacing: 0;
+}
+
+.section-head p:not(.eyebrow) {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.data-head {
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.data-head p:not(.eyebrow) {
+  max-width: 1080px;
+  font-size: 17px;
+  line-height: 1.72;
+}
+
+.data-story {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1320px;
+  margin: 0 auto 18px;
+}
+
+.data-story article {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.data-story strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--deep);
+  font-size: 18px;
+}
+
+.data-story p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 15.5px;
+  line-height: 1.66;
+}
+
+.data-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 1320px;
+  margin: 0 auto 30px;
+}
+
+.data-points span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: #fff;
+  color: var(--deep);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.data-figures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.figure {
+  margin: 0;
+  padding: 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.figure img,
+.highlight img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.method-section,
+.figure-section,
+.outlook-section,
+.file-section {
+  background: var(--wash);
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1120px;
+}
+
+.method-card,
+.candidate,
+.conclusion-list article,
+.outlook-list article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.method-card {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 20px;
+  min-height: 360px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.method-number {
+  display: grid;
+  place-items: start center;
+  padding-top: 28px;
+  color: #fff;
+  background: var(--deep);
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.method-body {
+  padding: 26px 26px 24px 0;
+}
+
+.method-kicker {
+  margin: 0 0 6px;
+  color: var(--rust);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.method-card h3 {
+  margin-bottom: 12px;
+  font-size: 24px;
+  line-height: 1.24;
+}
+
+.method-card p {
+  margin-bottom: 14px;
+  color: var(--muted);
+}
+
+.method-card ul {
+  display: grid;
+  gap: 7px;
+  margin: 0 0 18px;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.58;
+}
+
+.method-output {
+  border-top: 1px solid var(--line);
+  padding-top: 13px;
+  color: var(--deep);
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.score-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  max-width: 1120px;
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--line);
+}
+
+.score-strip article {
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.score-strip strong {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--deep);
+  font-size: 17px;
+}
+
+.score-strip p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 14.5px;
+}
+
+.highlight {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.52fr) minmax(500px, 1.48fr);
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 26px;
+}
+
+.highlight > div {
+  display: grid;
+  align-content: center;
+  padding: 32px;
+  color: #fff;
+  background: var(--deep);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.highlight .eyebrow {
+  color: #f2c38c;
+}
+
+.highlight h3 {
+  margin-bottom: 12px;
+  font-size: clamp(48px, 6vw, 78px);
+  line-height: 1;
+}
+
+.highlight p:not(.eyebrow) {
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.highlight figure {
+  margin: 0;
+  padding: 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.candidate {
+  padding: 24px;
+}
+
+.candidate-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.candidate-head h3 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.candidate-head span {
+  color: var(--rust);
+  font-size: 12.5px;
+  font-weight: 900;
+}
+
+.pathway {
+  margin: 8px 0 12px;
+  color: var(--teal) !important;
+  font-weight: 800;
+}
+
+.candidate p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.candidate dl {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 18px 0 0;
+}
+
+.candidate dl div {
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+dt {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+dd {
+  margin: 2px 0 0;
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 850;
+}
+
+.table-wrap {
+  margin-top: 28px;
+  overflow-x: auto;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: var(--deep);
+  background: #f2f6f4;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+td {
+  color: #35413e;
+  font-size: 14px;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 1120px;
+}
+
+.figure-grid .figure:first-child {
+  grid-column: 1 / -1;
+}
+
+.conclusion-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1120px;
+}
+
+.conclusion-list article {
+  padding: 24px;
+}
+
+.conclusion-list h3 {
+  margin-bottom: 8px;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.conclusion-list p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.outlook-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1120px;
+}
+
+.outlook-list article {
+  padding: 24px;
+}
+
+.outlook-list article:first-child {
+  border-left: 4px solid var(--rust);
+}
+
+.outlook-list h3 {
+  margin-bottom: 9px;
+  color: var(--deep);
+  font-size: 21px;
+  line-height: 1.28;
+}
+
+.outlook-list p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.compact {
+  padding-top: 54px;
+  padding-bottom: 66px;
+}
+
+.file-list {
+  display: grid;
+  gap: 8px;
+  max-width: 980px;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+code {
+  color: var(--deep);
+  background: #edf3ef;
+  border-radius: 4px;
+  padding: 2px 5px;
+  font-size: 0.92em;
+}
+
+@media (max-width: 1050px) {
+  .hero-summary,
+  .data-story,
+  .method-grid,
+  .candidate-grid,
+  .conclusion-list,
+  .outlook-list,
+  .score-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .data-figures,
+  .highlight,
+  .figure-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  nav {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 64px 18px 52px;
+  }
+
+  h1 {
+    font-size: clamp(36px, 12vw, 52px);
+  }
+
+  .lead {
+    font-size: 16.5px;
+  }
+
+  .section {
+    padding: 64px 18px;
+  }
+
+  .hero-summary,
+  .data-story,
+  .method-grid,
+  .candidate-grid,
+  .conclusion-list,
+  .outlook-list,
+  .score-strip,
+  .data-figures {
+    grid-template-columns: 1fr;
+  }
+
+  .method-card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .method-number {
+    place-items: center start;
+    padding: 12px 18px;
+  }
+
+  .method-body {
+    padding: 22px;
+  }
+
+  .candidate dl {
+    grid-template-columns: 1fr;
+  }
+
+  .figure {
+    padding: 10px;
+  }
+}
+
+</style>
+<script>
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+  if (window.location.hash) {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+  }
+  window.addEventListener("load", function () {
+    window.scrollTo(0, 0);
+  });
+</script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top">BAT Broad17 图谱</a>
+    <nav>
+      <a href="#data">数据</a>
+      <a href="#method">方法</a>
+      <a href="#results">结果</a>
+      <a href="#figures">图表</a>
+      <a href="#conclusion">结论</a>
+      <a href="#outlook">展望</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">ESM2 蛋白表征 · Carbon-3B 编码序列表征 · 基因本体背景校准</p>
+        <h1>蝙蝠免疫基因图谱</h1>
+        <p class="lead">比较 97 个染色体级别哺乳动物物种和 403 个基因，筛选在蛋白和编码序列表征空间中呈现翼手目特殊结构的免疫候选基因。</p>
+        <div class="hero-summary">
+          <article><strong>97</strong><span>主分析物种</span></article>
+          <article><strong>17</strong><span>哺乳动物目</span></article>
+          <article><strong>403</strong><span>扩展基因面板</span></article>
+          <article><strong>273</strong><span>基因本体背景基因</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="data" class="section">
+      <div class="section-head data-head">
+        <p class="eyebrow">数据范围</p>
+        <h2>物种、基因和序列提取</h2>
+        <p>这一部分说明分析对象如何从公开数据中收敛而来：先从 BAT1K 状态表和 NCBI 注释资产筛出可用蝙蝠数据，再与跨目的非蝙蝠哺乳动物对照组成主分析物种池，最后在统一物种池中提取目标基因的蛋白和编码序列。</p>
+      </div>
+      <div class="data-story">
+        <article>
+          <strong>物种口径</strong>
+          <p>主分析只保留染色体级别组装，固定为 97 个哺乳动物物种：23 个蝙蝠物种和 74 个非蝙蝠对照。这样可以降低组装连续性和注释质量差异对后续表征距离的影响。</p>
+        </article>
+        <article>
+          <strong>分类覆盖</strong>
+          <p>蝙蝠侧覆盖 9 个科，非蝙蝠侧覆盖 16 个其他哺乳动物目。这个设计不是简单的“蝙蝠 vs 非蝙蝠”二分类，而是把翼手目放在更广的哺乳动物目级背景中比较。</p>
+        </article>
+        <article>
+          <strong>基因面板</strong>
+          <p>基因面板由 122 个原始候选/对照基因和 281 个按基因本体分层选择的非免疫背景基因组成，用来判断免疫候选是否真正高于广义非免疫背景。</p>
+        </article>
+      </div>
+      <div class="data-points">
+        <span>23 个蝙蝠物种</span>
+        <span>74 个非蝙蝠对照</span>
+        <span>122 个核心候选/对照基因</span>
+        <span>281 个基因本体背景基因</span>
+      </div>
+      <div class="data-figures">
+        <figure class="figure">
+          <img src="assets/data_acquisition_funnel.svg" alt="BAT1K 到 NCBI 可用注释数据筛选漏斗" />
+          <figcaption>BAT1K 状态表到 NCBI 可下载注释数据的筛选漏斗。主分析进一步只取染色体级物种。</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/broad17_order_composition_cn.svg" alt="Broad17 主分析物种的哺乳动物目覆盖" />
+          <figcaption>Broad17 主分析物种的哺乳动物目覆盖。翼手目是最大单一目，非蝙蝠背景提供跨目的对照。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="method" class="section method-section">
+      <div class="section-head">
+        <p class="eyebrow">方法</p>
+        <h2>从公开注释基因组到可排序候选基因</h2>
+        <p>方法部分分成四个层次：先固定可比较的物种和基因输入，再用蛋白和编码序列基础模型生成表征，随后计算目级别距离，最后用基因本体背景和严格同源质控收敛候选。</p>
+      </div>
+      <div class="method-grid">
+        <article class="method-card">
+          <div class="method-number">01</div>
+          <div class="method-body">
+            <p class="method-kicker">输入构建</p>
+            <h3>序列准备</h3>
+            <p>从每个物种的注释文件、蛋白序列和编码序列中建立基因名与蛋白编号的对应关系，提取目标基因的最长蛋白异构体以及匹配的编码序列。</p>
+            <ul>
+              <li>主分析只使用 97 个染色体级别哺乳动物物种。</li>
+              <li>同一物种同一基因存在多个转录本时，统一选择最长蛋白。</li>
+              <li>保留物种名、组装号、基因名和蛋白编号，保证后续结果可回溯。</li>
+            </ul>
+            <div class="method-output">产出：蛋白和编码序列图谱输入</div>
+          </div>
+        </article>
+        <article class="method-card">
+          <div class="method-number">02</div>
+          <div class="method-body">
+            <p class="method-kicker">双模态表征</p>
+            <h3>蛋白和编码序列表征</h3>
+            <p>蛋白层使用 ESM2 650M 得到 1280 维表示；编码序列层使用 Carbon-3B 得到 3072 维表示。两个模型都不是用蝙蝠标签监督训练，而是作为序列基础表征工具。</p>
+            <ul>
+              <li>蛋白过长时按 ESM2 上限截断，并记录截断信息。</li>
+              <li>编码序列输入前只保留 A/C/G/T/N，并裁剪为 6 个碱基的倍数。</li>
+              <li>Carbon 结果主要解释分隔符池化和平均池化两种表示。</li>
+            </ul>
+            <div class="method-output">产出：蛋白表征矩阵 + 编码序列表征矩阵</div>
+          </div>
+        </article>
+        <article class="method-card">
+          <div class="method-number">03</div>
+          <div class="method-body">
+            <p class="method-kicker">目级别结构</p>
+            <h3>目级别距离评分</h3>
+            <p>对每个基因单独标准化表征，避免不同基因的表征尺度直接混在一起比较。随后计算各哺乳动物目的中心点，并基于中心点距离得到基因级分数。</p>
+            <ul>
+              <li>目中心离散度衡量所有哺乳动物目整体分得有多开。</li>
+              <li>翼手目距离衡量翼手目中心点到其他目的平均距离。</li>
+              <li>蛋白模型与 Carbon 模型的排序一致性用于判断跨模态支持。</li>
+            </ul>
+            <div class="method-output">产出：目中心离散度、翼手目距离、跨模态一致性</div>
+          </div>
+        </article>
+        <article class="method-card">
+          <div class="method-number">04</div>
+          <div class="method-body">
+            <p class="method-kicker">候选收敛</p>
+            <h3>背景校准与严格质控</h3>
+            <p>把免疫候选基因放入 273 个高覆盖非免疫基因本体背景基因中计算分位数，避免只和少数管家基因对照比较。六个优先基因随后进入严格同源质控。</p>
+            <ul>
+              <li>基因本体背景覆盖膜蛋白、代谢、转录调控、细胞骨架、DNA 修复等类别。</li>
+              <li>严格质控检查一对一同源、基因名纯度、编码序列可翻译性和长度异常。</li>
+              <li>CTSB、MAVS、STAT2、TNF 的严格同源质量最完整。</li>
+            </ul>
+            <div class="method-output">产出：基因本体背景分位数 + 严格同源质控</div>
+          </div>
+        </article>
+      </div>
+      <div class="score-strip">
+        <article>
+          <strong>目中心离散度</strong>
+          <p>衡量 17 个哺乳动物目的中心点整体分得有多开，不是翼手目特异分数。</p>
+        </article>
+        <article>
+          <strong>翼手目距离</strong>
+          <p>计算翼手目中心点到各非蝙蝠目中心点的平均距离。</p>
+        </article>
+        <article>
+          <strong>GO 背景分位数</strong>
+          <p>判断候选基因是否超过广义非免疫功能背景。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="results" class="section results-section">
+      <div class="section-head">
+        <p class="eyebrow">核心结果</p>
+        <h2>六个优先基因</h2>
+        <p>综合蛋白 ESM2 表征、Carbon-3B 编码序列表征、基因本体背景分位数、蛋白与编码序列表征一致性以及严格同源质控后，当前目级探索顺序为 CTSB -> MAVS -> STAT2 -> TNF -> MX1 -> IFNAR2。</p>
+      </div>
+      <div class="highlight">
+        <div>
+          <p class="eyebrow">最高优先级</p>
+          <h3>CTSB</h3>
+          <p>CTSB 同时具有较高的蛋白背景分位数、翼手目特异分位数、编码序列表征支持和完整严格同源质控，是当前证据链最完整的候选。</p>
+        </div>
+        <figure>
+          <img src="assets/broad17_concordance_qc_cn.svg" alt="候选基因跨模态一致性和严格同源质控" />
+        </figure>
+      </div>
+      <div class="candidate-grid">
+        
+            <article class="candidate tier-a">
+              <div class="candidate-head">
+                <h3>CTSB</h3>
+                <span>A 级</span>
+              </div>
+              <p class="pathway">病毒进入 / 溶酶体蛋白酶</p>
+              <p>蛋白层整体背景分位数和翼手目背景分位数均为 97.1，编码序列两种池化也保持高位；严格同源质控 56/56 通过。</p>
+              <dl>
+                <div><dt>蛋白翼手目分位数</dt><dd>97.1</dd></div>
+                <div><dt>编码序列平均池化</dt><dd>95.6</dd></div>
+                <div><dt>严格同源质控</dt><dd>56/56</dd></div>
+              </dl>
+            </article>
+            
+
+            <article class="candidate tier-a">
+              <div class="candidate-head">
+                <h3>MAVS</h3>
+                <span>A 级</span>
+              </div>
+              <p class="pathway">先天免疫信号</p>
+              <p>蛋白层翼手目背景分位数为 94.1，编码序列平均池化为 90.8，蛋白和编码序列表征的排序一致性较高。</p>
+              <dl>
+                <div><dt>蛋白翼手目分位数</dt><dd>94.1</dd></div>
+                <div><dt>编码序列平均池化</dt><dd>90.8</dd></div>
+                <div><dt>严格同源质控</dt><dd>56/56</dd></div>
+              </dl>
+            </article>
+            
+
+            <article class="candidate tier-a">
+              <div class="candidate-head">
+                <h3>STAT2</h3>
+                <span>A 级</span>
+              </div>
+              <p class="pathway">干扰素反应</p>
+              <p>蛋白层为 A 级候选，编码序列平均池化支持增强，严格同源覆盖完整。</p>
+              <dl>
+                <div><dt>蛋白翼手目分位数</dt><dd>89.4</dd></div>
+                <div><dt>编码序列平均池化</dt><dd>86.8</dd></div>
+                <div><dt>严格同源质控</dt><dd>56/56</dd></div>
+              </dl>
+            </article>
+            
+
+            <article class="candidate tier-a">
+              <div class="candidate-head">
+                <h3>TNF</h3>
+                <span>A 级</span>
+              </div>
+              <p class="pathway">炎症与免疫扩增</p>
+              <p>整体背景分位数最高，编码序列平均池化也支持；翼手目特异分位数相对前两位较弱。</p>
+              <dl>
+                <div><dt>蛋白翼手目分位数</dt><dd>82.4</dd></div>
+                <div><dt>编码序列平均池化</dt><dd>81.0</dd></div>
+                <div><dt>严格同源质控</dt><dd>55/55</dd></div>
+              </dl>
+            </article>
+            
+
+            <article class="candidate tier-b">
+              <div class="candidate-head">
+                <h3>MX1</h3>
+                <span>B 级</span>
+              </div>
+              <p class="pathway">干扰素诱导限制因子</p>
+              <p>蛋白和编码序列表征都有高分，但解释更接近蝙蝠科级结构，暂不作为最干净的全翼手目信号。</p>
+              <dl>
+                <div><dt>蛋白翼手目分位数</dt><dd>81.7</dd></div>
+                <div><dt>编码序列平均池化</dt><dd>80.6</dd></div>
+                <div><dt>严格同源质控</dt><dd>46/46</dd></div>
+              </dl>
+            </article>
+            
+
+            <article class="candidate tier-a">
+              <div class="candidate-head">
+                <h3>IFNAR2</h3>
+                <span>A 级</span>
+              </div>
+              <p class="pathway">干扰素受体通路</p>
+              <p>蛋白层支持较强，但编码序列翼手目分位数和严格质控覆盖相对较弱，后续需要更谨慎复核。</p>
+              <dl>
+                <div><dt>蛋白翼手目分位数</dt><dd>89.4</dd></div>
+                <div><dt>编码序列平均池化</dt><dd>74.0</dd></div>
+                <div><dt>严格同源质控</dt><dd>40/42</dd></div>
+              </dl>
+            </article>
+            
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>基因</th>
+              <th>通路</th>
+              <th>等级</th>
+              <th>蛋白翼手目分位数</th>
+              <th>编码序列平均池化</th>
+              <th>跨模态一致性</th>
+              <th>严格同源质控</th>
+              <th>解释</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td><strong>CTSB</strong></td>
+              <td>病毒进入 / 溶酶体蛋白酶</td>
+              <td>A 级</td>
+              <td>97.1</td>
+              <td>95.6</td>
+              <td>0.58</td>
+              <td>56/56</td>
+              <td>翼手目目级信号</td>
+            </tr>
+            
+
+            <tr>
+              <td><strong>MAVS</strong></td>
+              <td>先天免疫信号</td>
+              <td>A 级</td>
+              <td>94.1</td>
+              <td>90.8</td>
+              <td>0.72</td>
+              <td>56/56</td>
+              <td>翼手目目级信号</td>
+            </tr>
+            
+
+            <tr>
+              <td><strong>STAT2</strong></td>
+              <td>干扰素反应</td>
+              <td>A 级</td>
+              <td>89.4</td>
+              <td>86.8</td>
+              <td>0.78</td>
+              <td>56/56</td>
+              <td>翼手目目级信号</td>
+            </tr>
+            
+
+            <tr>
+              <td><strong>TNF</strong></td>
+              <td>炎症与免疫扩增</td>
+              <td>A 级</td>
+              <td>82.4</td>
+              <td>81.0</td>
+              <td>0.55</td>
+              <td>55/55</td>
+              <td>翼手目目级信号</td>
+            </tr>
+            
+
+            <tr>
+              <td><strong>MX1</strong></td>
+              <td>干扰素诱导限制因子</td>
+              <td>B 级</td>
+              <td>81.7</td>
+              <td>80.6</td>
+              <td>0.85</td>
+              <td>46/46</td>
+              <td>蝙蝠科级结构</td>
+            </tr>
+            
+
+            <tr>
+              <td><strong>IFNAR2</strong></td>
+              <td>干扰素受体通路</td>
+              <td>A 级</td>
+              <td>89.4</td>
+              <td>74.0</td>
+              <td>0.49</td>
+              <td>40/42</td>
+              <td>翼手目目级信号</td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="figures" class="section figure-section">
+      <div class="section-head">
+        <p class="eyebrow">图表</p>
+        <h2>核心证据图表</h2>
+        <p>图表按证据链排列：基因本体背景中的位置、蛋白与编码序列两层模型是否同向支持、以及六个优先基因的严格同源质控结果。</p>
+      </div>
+      <div class="figure-grid">
+        <figure class="figure">
+          <img src="assets/broad17_go_background_distribution_cn.svg" alt="六个候选基因在基因本体背景分布中的位置" />
+          <figcaption>六个候选基因在基因本体背景分布中的位置。CTSB 和 MAVS 位于分布右端，说明翼手目中心点到其他哺乳动物目的平均距离在非免疫背景中也偏高。</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/broad17_protein_carbon_support_cn.svg" alt="蛋白模型和编码序列模型对候选基因的支持" />
+          <figcaption>蛋白模型与编码序列模型的同向支持。Carbon-3B 平均池化对 MAVS、STAT2、TNF 的支持更清晰；MX1 虽然分数较高，但模式更偏向蝙蝠科级结构。</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/broad17_concordance_qc_cn.svg" alt="蛋白和编码序列表征一致性以及严格同源质控" />
+          <figcaption>蛋白表征与编码序列表征的排序一致性，以及六个优先基因的严格同源质控。CTSB、MAVS、STAT2、TNF 的同源序列质量最完整。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="conclusion" class="section">
+      <div class="section-head">
+        <p class="eyebrow">解释边界</p>
+        <h2>主要结论</h2>
+      </div>
+      <div class="conclusion-list">
+        <article>
+          <h3>1. CTSB 是证据最干净的候选</h3>
+          <p>蛋白表征层和编码序列表征层都把 CTSB 放在基因本体背景的高分区间；严格同源质控也完整通过。它适合作为后续密码子级比对和选择压力检验的第一个目标。</p>
+        </article>
+        <article>
+          <h3>2. MAVS 是第二个优先目标</h3>
+          <p>MAVS 在蛋白表征和 Carbon-3B 平均池化编码序列表征中都有较强的翼手目相关分位数，并且两层模型排序一致性较高，说明蛋白和编码序列表征空间给出了相近方向的信号。</p>
+        </article>
+        <article>
+          <h3>3. STAT2、TNF、MX1、IFNAR2 需要分层解释</h3>
+          <p>STAT2 和 TNF 的严格质控较完整，编码序列平均池化支持较好；MX1 更像蝙蝠科级结构；IFNAR2 在蛋白层较强，但严格质控覆盖和编码序列层的翼手目分位数相对较弱。</p>
+        </article>
+        <article>
+          <h3>4. 这些结果是候选发现，不是选择检验结论</h3>
+          <p>表征空间距离可以指出哪些基因值得深挖，但不能单独证明正选择或功能改变。下一步应对优先基因做严格同源序列比对、基因树与物种树一致性检查，并运行分支选择检验、基因水平选择检验、密码子模型或结构功能验证。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="outlook" class="section outlook-section">
+      <div class="section-head">
+        <p class="eyebrow">不足与展望</p>
+        <h2>目前的不足与展望</h2>
+        <p>当前结果适合作为候选发现和汇报展示，但还不应被解释为已经完成的进化机制证明。后续需要把表征空间信号、系统发育关系和传统进化分析更紧密地连接起来。</p>
+      </div>
+      <div class="outlook-list">
+        <article>
+          <h3>1. 表征分数设计仍然偏粗</h3>
+          <p>现在的分数主要基于中心点距离和分位数校准，能有效筛出候选，但对目内变异、物种采样不均衡、基因长度、覆盖度和模型池化方式的处理还比较粗。后续可以加入重采样置信区间、置换检验、长度和覆盖匹配校正，以及更稳健的多指标综合评分。</p>
+        </article>
+        <article>
+          <h3>2. 需要把表征变化放到系统发育树上</h3>
+          <p>目前主要比较不同哺乳动物目的整体位置，还没有显式利用进化先后关系。后续可以先建立可靠的物种树和基因树，再沿树上分支分析表征变化，例如比较祖先节点到后代分支的表征位移，判断信号是否集中在翼手目主干、某些蝙蝠科，还是多个分支独立出现。</p>
+        </article>
+        <article>
+          <h3>3. 同源关系和基因家族复杂性仍需加强</h3>
+          <p>高通量图谱阶段依赖注释基因名和最长转录本，仍可能受到旁系同源、拷贝数变化、错误注释和转录本选择的影响。后续应对高优先级基因逐一做严格一对一同源鉴定、基因树校正和异常序列复核，尤其是干扰素、APOBEC、TRIM、OAS 等复杂基因家族。</p>
+        </article>
+        <article>
+          <h3>4. 表征信号需要与功能和选择证据闭环</h3>
+          <p>表征距离只能说明序列在模型空间中呈现特殊结构，不能直接说明正选择、适应性进化或功能改变。后续应结合密码子级比对、分支模型、位点模型、蛋白结构区域映射、功能位点注释和实验文献，判断高分基因是否对应真实的分子机制。</p>
+        </article>
+        <article>
+          <h3>5. 需要评估模型和背景选择的稳健性</h3>
+          <p>ESM2 和 Carbon-3B 给出的信号可能受模型架构、池化方式和训练语料影响。后续可以比较不同蛋白模型、不同编码序列模型、不同降维或距离度量，并在不同非免疫背景、不同物种子集和不同目级合并策略下检查候选排序是否稳定。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section compact file-section">
+      <div class="section-head">
+        <p class="eyebrow">主要文件</p>
+        <h2>主要结果文件</h2>
+      </div>
+      <ul class="file-list">
+        <li><code>report/version1final_full_methods_results.md</code>：完整方法、分数和结果说明。</li>
+        <li><code>results/order_gene_scores.main.tsv</code>：122 个核心基因的蛋白表征基因级分数。</li>
+        <li><code>results/go_background_calibration.main.tsv</code>：85 个免疫基因相对基因本体背景的分位数。</li>
+        <li><code>results/carbon3b_mean_protein_concordance.main.tsv</code>：编码序列平均池化与蛋白表征的跨模态一致性。</li>
+        <li><code>results/strict_ortholog_qc_six_genes.gene_qc.tsv</code>：六个优先基因的严格同源质控。</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 680" role="img" aria-label="跨模态一致性和严格同源质控">
+
+  <style>
+    .title { font: 800 30px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #172321; }
+    .subtitle { font: 500 17px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #5e6b67; }
+    .label { font: 650 15px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #35413e; }
+    .small { font: 500 13px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #66736f; }
+    .value { font: 800 14px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #263130; }
+    .axis { font: 500 12px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #6b7773; }
+    .note { font: 500 14px "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif; fill: #5e6b67; }
+  </style>
+
+<rect width="1120" height="680" rx="18" fill="#fbfaf7" />
+<text x="54.0" y="56.0" text-anchor="start" class="title">跨模态一致性与严格同源质控</text>
+<text x="54.0" y="88.0" text-anchor="start" class="subtitle">左侧为蛋白与编码序列排序一致性，右侧为严格同源覆盖率和成员通过率。</text>
+<line x1="210.0" y1="128" x2="210.0" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="210.0" y="512.0" text-anchor="middle" class="axis">0</text>
+<line x1="680.0" y1="128" x2="680.0" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="680.0" y="512.0" text-anchor="middle" class="axis">0</text>
+<line x1="292.5" y1="128" x2="292.5" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="292.5" y="512.0" text-anchor="middle" class="axis">25</text>
+<line x1="755.0" y1="128" x2="755.0" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="755.0" y="512.0" text-anchor="middle" class="axis">25</text>
+<line x1="375.0" y1="128" x2="375.0" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="375.0" y="512.0" text-anchor="middle" class="axis">50</text>
+<line x1="830.0" y1="128" x2="830.0" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="830.0" y="512.0" text-anchor="middle" class="axis">50</text>
+<line x1="457.5" y1="128" x2="457.5" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="457.5" y="512.0" text-anchor="middle" class="axis">75</text>
+<line x1="905.0" y1="128" x2="905.0" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="905.0" y="512.0" text-anchor="middle" class="axis">75</text>
+<line x1="540.0" y1="128" x2="540.0" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="540.0" y="512.0" text-anchor="middle" class="axis">100</text>
+<line x1="980.0" y1="128" x2="980.0" y2="480" stroke="#dbe4e0" stroke-width="1" />
+<text x="980.0" y="512.0" text-anchor="middle" class="axis">100</text>
+<text x="375.0" y="106.0" text-anchor="middle" class="label">跨模态排序一致性</text>
+<text x="830.0" y="106.0" text-anchor="middle" class="label">严格同源质控</text>
+<text x="120.0" y="173.0" text-anchor="end" class="label">CTSB</text>
+<rect x="210.0" y="148.0" width="190.2" height="24.0" rx="4" fill="#335c81" />
+<text x="410.2" y="166.0" text-anchor="start" class="value">58</text>
+<rect x="680.0" y="144.0" width="300.0" height="18.0" rx="3" fill="#216869" />
+<rect x="680.0" y="168.0" width="300.0" height="18.0" rx="3" fill="#c28b2c" />
+<text x="992.0" y="164.0" text-anchor="start" class="value">56/56</text>
+<text x="120.0" y="227.0" text-anchor="end" class="label">MAVS</text>
+<rect x="210.0" y="202.0" width="236.8" height="24.0" rx="4" fill="#335c81" />
+<text x="456.8" y="220.0" text-anchor="start" class="value">72</text>
+<rect x="680.0" y="198.0" width="300.0" height="18.0" rx="3" fill="#216869" />
+<rect x="680.0" y="222.0" width="300.0" height="18.0" rx="3" fill="#c28b2c" />
+<text x="992.0" y="218.0" text-anchor="start" class="value">56/56</text>
+<text x="120.0" y="281.0" text-anchor="end" class="label">STAT2</text>
+<rect x="210.0" y="256.0" width="258.2" height="24.0" rx="4" fill="#335c81" />
+<text x="478.2" y="274.0" text-anchor="start" class="value">78</text>
+<rect x="680.0" y="252.0" width="300.0" height="18.0" rx="3" fill="#216869" />
+<rect x="680.0" y="276.0" width="300.0" height="18.0" rx="3" fill="#c28b2c" />
+<text x="992.0" y="272.0" text-anchor="start" class="value">56/56</text>
+<text x="120.0" y="335.0" text-anchor="end" class="label">TNF</text>
+<rect x="210.0" y="310.0" width="182.5" height="24.0" rx="4" fill="#335c81" />
+<text x="402.5" y="328.0" text-anchor="start" class="value">55</text>
+<rect x="680.0" y="306.0" width="294.6" height="18.0" rx="3" fill="#216869" />
+<rect x="680.0" y="330.0" width="300.0" height="18.0" rx="3" fill="#c28b2c" />
+<text x="992.0" y="326.0" text-anchor="start" class="value">55/55</text>
+<text x="120.0" y="389.0" text-anchor="end" class="label">MX1</text>
+<rect x="210.0" y="364.0" width="281.0" height="24.0" rx="4" fill="#335c81" />
+<text x="501.0" y="382.0" text-anchor="start" class="value">85</text>
+<rect x="680.0" y="360.0" width="246.4" height="18.0" rx="3" fill="#216869" />
+<rect x="680.0" y="384.0" width="300.0" height="18.0" rx="3" fill="#c28b2c" />
+<text x="992.0" y="380.0" text-anchor="start" class="value">46/46</text>
+<text x="120.0" y="443.0" text-anchor="end" class="label">IFNAR2</text>
+<rect x="210.0" y="418.0" width="160.3" height="24.0" rx="4" fill="#335c81" />
+<text x="380.3" y="436.0" text-anchor="start" class="value">49</text>
+<rect x="680.0" y="414.0" width="225.0" height="18.0" rx="3" fill="#216869" />
+<rect x="680.0" y="438.0" width="285.7" height="18.0" rx="3" fill="#c28b2c" />
+<text x="992.0" y="434.0" text-anchor="start" class="value">40/42</text>
+<rect x="404.0" y="608.0" width="18.0" height="18.0" rx="3" fill="#335c81" />
+<text x="432.0" y="622.0" text-anchor="start" class="small">排序一致性</text>
+<rect x="562.0" y="608.0" width="18.0" height="18.0" rx="3" fill="#216869" />
+<text x="590.0" y="622.0" text-anchor="start" class="small">覆盖率</text>
+<rect x="680.0" y="608.0" width="18.0" height="18.0" rx="3" fill="#c28b2c" />
+<text x="708.0" y="622.0" text-anchor="start" class="small">成员通过率</text>
+<text x="54.0" y="656.0" text-anchor="start" class="note">CTSB、MAVS、STAT2、TNF 的严格同源质量最完整；IFNAR2 仍需复核。</text>
+</svg>
